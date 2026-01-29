@@ -77,3 +77,31 @@ This is a printed circuit board used to receive 1090MHz signals, decode them, an
 | ESPRESSIF(乐鑫) | ESP32-S3-WROOM-1U-N16 | 5.246 | WIRELM-SMD_ESP32-S3-WROOM-1U |
 | HCTL(华灿天禄) | HC-TYPE-C-16P-01A-G | 0.139 | USB-C-SMD_G-SWITCH_GT-USB-7010EN |
 | TAITIEN(泰艺电子) | 25MHz | 0.151 | CRYSTAL-SMD_4P-L3.2-W2.5-BL |
+***
+# Sponsors
+
+<div align="center">
+
+## Proudly Sponsored By
+
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <a href="https://jlcpcb.com" target="_blank">
+        <img src="https://github.com/user-attachments/assets/c9b44859-d24b-48ba-b1d5-8fd29674d73d" alt="JLCPCB" width="400"/>
+      </a>
+    </td>
+    <td align="center" width="50%">
+      <a href="https://oshwlab.com/explore" target="_blank" rel="noopener noreferrer">
+        <img src="https://github.com/user-attachments/assets/232753ed-b258-49bf-9159-06be05e877c1" alt="OSHWLab" width="400"/>
+      </a>
+    </td>
+  </tr>
+</table>
+
+This project is made possible by the generous support of **JLCPCB** and **OSHWLab**. Their commitment to the open hardware community and maker ecosystem enables innovative projects like this to come to life.
+
+</div>
+
+***
+
