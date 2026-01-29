@@ -16,7 +16,7 @@ This is a printed circuit board used to receive 1090MHz signals, decode them, an
 <img width="1600" height="864" alt="image 5" src="https://github.com/user-attachments/assets/c30959f5-797a-4f72-85be-7092659f076b" />
 ***
 **BOM**
-| Manufacturer | Part Name | Cost | Size |
+| Manufacturer | Part Name | Cost (USD) | Size |
 | :--- | :--- | :--- | :--- |
 | MYOUNG(美阳) | 18650 | 1.338 | BATTERY-SMD_18650-1S-L77.1-W20.7-1 |
 | YAGEO(国巨) | 100Ω | 0.021 | R0603 |
