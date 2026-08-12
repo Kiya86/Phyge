@@ -10,11 +10,6 @@ This is a printed circuit board used to receive 1090MHz signals, decode them, an
 **Bottom View (3D)**
 <img width="1848" height="903" alt="image 3" src="https://github.com/user-attachments/assets/b9e2b20b-25b1-42f0-a1eb-baca35bab58d" />
 
-**Top View (2D)**
-<img width="1602" height="872" alt="image 4" src="https://github.com/user-attachments/assets/2b8d719a-3ea8-4274-b57c-6ed47b6f33fe" />
-
-**Bottom View (2D)**
-<img width="1600" height="864" alt="image 5" src="https://github.com/user-attachments/assets/c30959f5-797a-4f72-85be-7092659f076b" />
 ***
 **BOM**
 | Manufacturer | Part Name | Cost (USD) | Size |
