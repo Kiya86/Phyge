@@ -1,80 +1,254 @@
-# Pyghe - Custom 1090 MHz receiver! 
+# Pyghe (1090 Mhz Reciever) 
 
-**Description** 
+<img width="1846" height="900" alt="Pyghe Top View" src="https://github.com/user-attachments/assets/020ed3ba-d867-4393-be22-cbc261fd8282" />
+<img width="1848" height="903" alt="Pyghe Bottom View" src="https://github.com/user-attachments/assets/b9e2b20b-25b1-42f0-a1eb-baca35bab58d" />
 
-This is a printed circuit board used to receive 1090MHz signals, decode them, and send them to ForeFlight using the GL90 protocol. "Phyge" features a dual MCU design (ESP32-S3/STM32H7), with the STM32 being responsible for sensors, front-end control, and decoding. The Esp32's primary responsibility is transmitting the decoded data through WiFi to ForeFlight using the GL90 protocol. Additionally, the board features a Ublox M10 GPS, various status LEDs, and a BMP 581.
-***
-**Top View (3D)**
-<img width="1846" height="900" alt="image 2" src="https://github.com/user-attachments/assets/020ed3ba-d867-4393-be22-cbc261fd8282" />
+<h4 align="center">
+A custom dual-MCU 1090 MHz ADS-B receiver designed for ForeFlight!
+</h4>
 
-**Bottom View (3D)**
-<img width="1848" height="903" alt="image 3" src="https://github.com/user-attachments/assets/b9e2b20b-25b1-42f0-a1eb-baca35bab58d" />
+<div align="center">
 
-***
-**BOM**
-| Manufacturer | Part Name | Cost (USD) | Size |
-| :--- | :--- | :--- | :--- |
-| MYOUNG(美阳) | 18650 | 1.338 | BATTERY-SMD_18650-1S-L77.1-W20.7-1 |
-| YAGEO(国巨) | 100Ω | 0.021 | R0603 |
-| EVERLIGHT(亿光) | GL | 0.02 | LED0603-RD |
-| YAGEO(国巨) | 100nF | 0.004 | C0603 |
-| TDK | 3pF | 0.017 | C0603 |
-| FH(风华) | 200pF | 0.004 | C0603 |
-| TDK | 330pF | 0.012 | C0603 |
-| SAMSUNG(三星) | 1nF | 0.003 | C0603 |
-| muRata(村田) | 100nF | 0.008 | C0603 |
-| TDK | 10uF | 0.078 | C0603 |
-| YAGEO(国巨) | 100nF | 0.002 | C0603 |
-| SAMSUNG(三星) | 10uF | 0.007 | C0603 |
-| SAMSUNG(三星) | 4.7uF | 0.01 | C0603 |
-| SAMSUNG(三星) | 1uF | 0.006 | C0603 |
-| YAGEO(国巨) | 2.2uF | 0.009 | C0603 |
-| SAMSUNG(三星) | 18pF | 0.005 | C0603 |
-| YAGEO(国巨) | 10nF | 0.009 | C0805 |
-| SAMSUNG(三星) | 1uF | 0.012 | C0805 |
-| YAGEO(国巨) | 330nF | 0.024 | C1206 |
-| SAMSUNG(三星) | 10uF | 0.032 | C1206 |
-| SAMSUNG(三星) | 22uF | 0.048 | C1206 |
-| Wild Goose(威谷) | 0.5pF | 0.029 | SOD-923_L0.9-W0.6-LS1.0 |
-| LRC(乐山无线电) | TVS | 0.016 | SOD-523_L1.2-W0.8-LS1.6-BI |
-| BOOMELE(博穆精密) | 2.54-1*6PHeader-RA | 0.03 | HDR-TH_6P-P2.54-H-M-W10.0 |
-| HRS(广濑) | U.FL-R-SMT-1(80) | 0.13 | RF-SMD_FRF05002-JSS103M |
-| APV(爱普微) | 620nH | 0.039 | IND-SMD_L2.3-W1.7 |
-| APV(爱普微) | 10nH | 0.038 | IND-SMD_L2.3-W1.7 |
-| TDK | 27nH | 0.007 | L0402 |
-| SHOU HAN(首韩) | 1.5uH | 0.156 | IND-SMD_L7.2-W6.6_GPSR0730 |
-| 国星光电 | PWR | 0.013 | LED0805-R-RD |
-| UNI-ROYAL(厚声) | 10Ω | 0.001 | R0603 |
-| UNI-ROYAL(厚声) | 1kΩ | 0.001 | R0603 |
-| UNI-ROYAL(厚声) | 10kΩ | 0.001 | R0603 |
-| UNI-ROYAL(厚声) | 150Ω | 0.001 | R0603 |
-| UNI-ROYAL(厚声) | 100kΩ | 0.001 | R0603 |
-| YAGEO(国巨) | 1kΩ | 0.001 | R0603 |
-| UNI-ROYAL(厚声) | 33kΩ | 0.001 | R0603 |
-| UNI-ROYAL(厚声) | 12kΩ | 0.001 | R0603 |
-| UNI-ROYAL(厚声) | 28.7kΩ | 0.001 | R0603 |
-| UNI-ROYAL(厚声) | 47Ω | 0.001 | R0603 |
-| UNI-ROYAL(厚声) | 10kΩ | 0.001 | R0603 |
-| Tyohm(幸亚电阻) | 5.1kΩ | 0.006 | R0805 |
-| PANASONIC(松下) | 4.7kΩ | 0.018 | R0805 |
-| kinghelm(金航标) | KH-SMA-K513-G | 0.597 | ANT-TH_KH-SMA-K513-G |
-| 韩国韩荣 | K2-1808SN-A4SW | 0.087 | KEY-SMD_4P-L4.2-W3.2-P2.20-LS5.1-TL |
-| Mini-Circuits | PGA-103+ | 2.551 | PGA-103+ |
-| TST(嘉硕) | TA0970A | 1.427 | FILTER-SMD_6P-L3.8-W3.8-BL |
-| MICROCHIP(美国微芯) | MCP6566RT-E/OT | 0.568 | SOT-23-5_L2.9-W1.6-P0.95-LS2.8-BL |
-| ADI(亚德诺) | AD8313ARMZ-REEL7 | 5.914 | MSOP-8_L3.0-W3.0-P0.65-LS5.0-BL |
-| Mini-Circuits | 4uH | 4.243 | IND-SMD_4P-L3.8-W3.8 |
-| U-BLOX | MAX-M10S-00B | 10.274 | SMD-18_L10.1-W9.7-P1.10-TL_SKG09F |
-| Bosch(博世) | BMP581 | 2.403 | LGA-10_L2.0-W2.0-P0.50-TL_BMP581 |
-| DIODES(美台) | AZ1117CH-3.3TRG1 | 0.075 | SOT-223-3_L6.5-W3.4-P2.30-LS7.0-BR |
-| MPS(芯源) | MP2672 | N/A | QFN-18_L3.0-W2.0-P0.40-TL_MPQ2166GD-Z |
-| G-Switch(品赞) | Main Switch | 0.34 | SW-TH_3P-P4.70_SS-12D06-G050 |
-| ST(意法半导体) | STM32H723VGT6 | 6.325 | LQFP-100_L14.0-W14.0-P0.50-LS16.0-BL |
-| ESPRESSIF(乐鑫) | ESP32-S3-WROOM-1U-N16 | 5.246 | WIRELM-SMD_ESP32-S3-WROOM-1U |
-| HCTL(华灿天禄) | HC-TYPE-C-16P-01A-G | 0.139 | USB-C-SMD_G-SWITCH_GT-USB-7010EN |
-| TAITIEN(泰艺电子) | 25MHz | 0.151 | CRYSTAL-SMD_4P-L3.2-W2.5-BL |
-***
-# Sponsors
+![STM32H7](https://img.shields.io/badge/STM32H7-03234B?style=for-the-badge\&logo=stmicroelectronics\&logoColor=white)
+![ESP32-S3](https://img.shields.io/badge/ESP32--S3-E7352C?style=for-the-badge\&logo=espressif\&logoColor=white)
+![GPS](https://img.shields.io/badge/u--blox%20M10-0057B8?style=for-the-badge\&logoColor=white)
+![JLCPCB](https://img.shields.io/badge/JLCPCB-C00000?style=for-the-badge\&logoColor=white)
+
+</div>
+
+<p align="center">
+  <a href="#key-features">Key Features</a> •
+  <a href="#purpose">Purpose</a> •
+  <a href="#pcb">PCB</a> •
+  <a href="#signal-chain">RF Signal Chain</a> •
+  <a href="#main-components">Main Components</a> •
+  <a href="#communication">Communication</a> •
+  <a href="#power-system">Power System</a> •
+  <a href="#bom">BOM</a>
+</p>
+
+## Key Features
+
+* **1090 MHz ADS-B Receiver** — Designed to receive and decode aircraft transponder broadcasts.
+* **STM32H723VGT6** — Primary processing MCU responsible for sensor handling, RF front-end control, and ADS-B decoding.
+* **ESP32-S3-WROOM-1U-N16** — Handles WiFi connectivity and transmission of decoded aircraft data to ForeFlight.
+* **GL90 Protocol** — Sends decoded traffic information to ForeFlight over WiFi.
+* **Mini-Circuits PGA-103+** — RF gain stage for the 1090 MHz receiver front-end.
+* **TA0970A SAW Filter** — Provides filtering of the 1090 MHz RF signal.
+* **AD8313** — RF logarithmic detector for signal-level measurement.
+* **u-blox MAX-M10S** — GNSS receiver for position and timing information.
+* **Bosch BMP581** — High-performance barometric pressure sensor for altitude and environmental data.
+* **USB-C** — USB connectivity for power, programming, and debugging.
+* **18650 Battery** — Integrated single-cell Li-ion battery power.
+* **Status LEDs** — Visual feedback for power, system state, and operation.
+* **Dual-MCU Architecture** — Separates real-time RF/processing tasks from wireless networking.
+
+## Purpose
+
+Pyghe is a compact 1090 MHz ADS-B receiver designed to provide aircraft traffic information to **ForeFlight**.
+
+The board uses a dual-MCU architecture to divide the workload between the **STM32H723** and **ESP32-S3**.
+
+The STM32 is responsible for the lower-level hardware and real-time processing, including the RF front-end, sensors, signal processing, and ADS-B decoding. Once aircraft data has been decoded, it is passed to the ESP32-S3.
+
+The ESP32-S3 provides the wireless networking layer and transmits the decoded traffic information to ForeFlight using the **GL90 protocol**.
+
+This architecture keeps the timing-sensitive RF and decoding workload isolated from the networking stack while still providing convenient WiFi connectivity.
+
+## PCB
+
+Pyghe is designed as a compact custom PCB integrating the complete RF receiver chain, two microcontrollers, GNSS, environmental sensing, battery management, and wireless connectivity.
+
+The board includes a dedicated RF path for 1090 MHz operation with an external antenna connection through an SMA connector.
+
+### Top View
+
+<img width="1846" height="900" alt="Pyghe Top View" src="https://github.com/user-attachments/assets/020ed3ba-d867-4393-be22-cbc261fd8282" />
+
+### Bottom View
+
+<img width="1848" height="903" alt="Pyghe Bottom View" src="https://github.com/user-attachments/assets/b9e2b20b-25b1-42f0-a1eb-baca35bab58d" />
+
+## RF Signal Chain
+
+Pyghe's receiver front-end is designed around the **1090 MHz ADS-B frequency**.
+
+The incoming RF signal passes through a dedicated filtering and amplification chain before being processed by the STM32.
+
+### RF Front-End
+
+**SMA Antenna → RF Filter → PGA-103+ LNA → RF Detection / Processing → STM32**
+
+Key RF components include:
+
+| Component          | Function                             |
+| ------------------ | ------------------------------------ |
+| **KH-SMA-K513-G**  | External antenna connector           |
+| **TA0970A**        | 1090 MHz RF filter                   |
+| **PGA-103+**       | Low-noise RF amplifier               |
+| **AD8313**         | RF logarithmic detector              |
+| **MCP6566RT-E/OT** | High-speed comparator                |
+| **STM32H723VGT6**  | Signal processing and ADS-B decoding |
+
+The RF section is kept physically concentrated on the PCB to minimize unwanted parasitics and interference at 1090 MHz.
+
+## Main Components
+
+| Category          | Component                 | Description                                                        |
+| ----------------- | ------------------------- | ------------------------------------------------------------------ |
+| Main MCU          | **STM32H723VGT6**         | STM32H7 high-performance MCU for RF control, sensors, and decoding |
+| Wireless MCU      | **ESP32-S3-WROOM-1U-N16** | WiFi-enabled MCU for ForeFlight connectivity                       |
+| RF Amplifier      | **PGA-103+**              | Mini-Circuits RF gain block                                        |
+| RF Filter         | **TA0970A**               | 1090 MHz RF filter                                                 |
+| RF Detector       | **AD8313ARMZ-REEL7**      | RF logarithmic detector                                            |
+| Comparator        | **MCP6566RT-E/OT**        | High-speed comparator                                              |
+| GNSS              | **MAX-M10S-00B**          | u-blox M10 GNSS receiver                                           |
+| Barometer         | **BMP581**                | Bosch high-performance pressure sensor                             |
+| Battery Charger   | **MP2672**                | Single-cell Li-ion battery management                              |
+| 3.3V Regulator    | **AZ1117CH-3.3TRG1**      | 3.3V LDO regulator                                                 |
+| Antenna Connector | **KH-SMA-K513-G**         | SMA RF antenna connector                                           |
+| RF Connector      | **U.FL-R-SMT-1(80)**      | U.FL RF connector                                                  |
+| USB               | **HC-TYPE-C-16P-01A-G**   | USB Type-C connector                                               |
+| Main Crystal      | **25 MHz**                | System oscillator                                                  |
+| Battery           | **18650**                 | Single-cell Li-ion battery                                         |
+| Pressure Sensor   | **BMP581**                | Barometric altitude / pressure sensing                             |
+| GNSS Antenna / RF | **U.FL**                  | Compact RF connection for GNSS                                     |
+| Status LEDs       | **0603 / 0805 LEDs**      | Power and system status indication                                 |
+
+## Dual-MCU Architecture
+
+Pyghe separates the system into two processing domains.
+
+### STM32H723
+
+The STM32H723 is responsible for the hardware-intensive portion of the receiver:
+
+* 1090 MHz RF front-end control
+* RF signal processing
+* ADS-B decoding
+* GNSS communication
+* BMP581 pressure sensing
+* System monitoring
+* Communication with the ESP32-S3
+
+### ESP32-S3
+
+The ESP32-S3 acts as the wireless communications processor:
+
+* WiFi connectivity
+* Communication with ForeFlight
+* GL90 protocol transmission
+* Receiving decoded aircraft data from the STM32
+* Wireless network management
+
+This separation allows the STM32 to focus on deterministic real-time processing while the ESP32 handles the less deterministic networking workload.
+
+## Communication
+
+### ForeFlight / GL90
+
+Decoded ADS-B traffic is transferred to the ESP32-S3 and transmitted over WiFi using the **GL90 protocol**, allowing the receiver to act as an external traffic source for ForeFlight.
+
+### STM32 ↔ ESP32
+
+The two MCUs communicate through a dedicated digital interface, allowing the STM32 to send decoded aircraft information and system data to the ESP32-S3.
+
+### GNSS
+
+The **u-blox MAX-M10S** provides GNSS position and timing data to the system.
+
+### USB-C
+
+USB-C provides a convenient interface for:
+
+* Programming
+* Firmware development
+* Debugging
+* Power input
+
+## Sensors
+
+### u-blox MAX-M10S
+
+The integrated M10 GNSS receiver provides:
+
+* Latitude / longitude
+* Altitude
+* Ground speed
+* Heading
+* Time synchronization
+* GNSS positioning
+
+### Bosch BMP581
+
+The BMP581 provides high-resolution barometric pressure measurements for determining pressure altitude and monitoring environmental conditions.
+
+## Power System
+
+Pyghe uses an integrated **single-cell 18650 Li-ion battery**.
+
+The power architecture includes:
+
+* 18650 battery input
+* Battery management / charging
+* 3.3V regulation
+* Power switching
+* USB-C power input
+* Dedicated power status indication
+
+The **AZ1117CH-3.3** provides the primary 3.3V regulated rail used by the digital electronics.
+
+## BOM
+
+The board uses a mixture of RF-specific components, high-performance microcontrollers, GNSS hardware, sensors, and standard passive components.
+
+### Major Components
+
+| Manufacturer   | Part                  | Cost (USD) | Package / Size |
+| -------------- | --------------------- | ---------: | -------------- |
+| ST             | STM32H723VGT6         |     $6.325 | LQFP-100       |
+| Espressif      | ESP32-S3-WROOM-1U-N16 |     $5.246 | Module         |
+| u-blox         | MAX-M10S-00B          |    $10.274 | SMD            |
+| Analog Devices | AD8313ARMZ-REEL7      |     $5.914 | MSOP-8         |
+| Mini-Circuits  | PGA-103+              |     $2.551 | RF Gain Block  |
+| Mini-Circuits  | 4 µH                  |     $4.243 | SMD            |
+| Bosch          | BMP581                |     $2.403 | LGA-10         |
+| TST            | TA0970A               |     $1.427 | RF Filter      |
+| Microchip      | MCP6566RT-E/OT        |     $0.568 | SOT-23-5       |
+| u-blox / RF    | U.FL-R-SMT-1(80)      |     $0.130 | RF Connector   |
+| Kinghelm       | KH-SMA-K513-G         |     $0.597 | SMA            |
+| MPS            | MP2672                |        N/A | QFN-18         |
+| Diodes Inc.    | AZ1117CH-3.3TRG1      |     $0.075 | SOT-223        |
+| HCTL           | HC-TYPE-C-16P-01A-G   |     $0.139 | USB-C          |
+| Taitien        | 25 MHz Crystal        |     $0.151 | SMD            |
+| Myoung         | 18650                 |     $1.338 | Battery        |
+
+The complete BOM contains the remaining passive components, inductors, LEDs, switches, connectors, capacitors, resistors, and protection components.
+
+## RF Components
+
+The receiver front-end contains several components specifically selected for operation around the 1090 MHz ADS-B band.
+
+| Component            | Purpose                      |
+| -------------------- | ---------------------------- |
+| **TA0970A**          | RF filtering                 |
+| **PGA-103+**         | RF amplification             |
+| **AD8313**           | RF signal-level detection    |
+| **MCP6566**          | High-speed signal comparison |
+| **KH-SMA-K513-G**    | External antenna interface   |
+| **U.FL-R-SMT-1(80)** | Compact RF interconnect      |
+
+## Status & Controls
+
+The board includes dedicated user-interface hardware for system feedback and control:
+
+* Power LED
+* System status LEDs
+* Main power switch
+* User / control button
+* USB-C interface
+
+## Sponsors
 
 <div align="center">
 
@@ -98,6 +272,3 @@ This is a printed circuit board used to receive 1090MHz signals, decode them, an
 This project is made possible by the generous support of **JLCPCB** and **OSHWLab**. Their commitment to the open hardware community and maker ecosystem enables innovative projects like this to come to life.
 
 </div>
-
-***
-
