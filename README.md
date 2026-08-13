@@ -11,7 +11,6 @@ A custom dual-MCU 1090 MHz ADS-B receiver designed for ForeFlight!
 
 ![STM32H7](https://img.shields.io/badge/STM32H7-03234B?style=for-the-badge\&logo=stmicroelectronics\&logoColor=white)
 ![ESP32-S3](https://img.shields.io/badge/ESP32--S3-E7352C?style=for-the-badge\&logo=espressif\&logoColor=white)
-![GPS](https://img.shields.io/badge/u--blox%20M10-0057B8?style=for-the-badge\&logoColor=white)
 ![JLCPCB](https://img.shields.io/badge/JLCPCB-C00000?style=for-the-badge\&logoColor=white)
 
 </div>
@@ -23,43 +22,23 @@ A custom dual-MCU 1090 MHz ADS-B receiver designed for ForeFlight!
   <a href="#signal-chain">RF Signal Chain</a> •
   <a href="#main-components">Main Components</a> •
   <a href="#communication">Communication</a> •
-  <a href="#power-system">Power System</a> •
-  <a href="#bom">BOM</a>
+  <a href="#bom">BOM</a> •
+  <a href="#sponsors">Sponsors</a> 
 </p>
 
-## Key Features
+## Features
 
-* **1090 MHz ADS-B Receiver** — Designed to receive and decode aircraft transponder broadcasts.
-* **STM32H723VGT6** — Primary processing MCU responsible for sensor handling, RF front-end control, and ADS-B decoding.
-* **ESP32-S3-WROOM-1U-N16** — Handles WiFi connectivity and transmission of decoded aircraft data to ForeFlight.
-* **GL90 Protocol** — Sends decoded traffic information to ForeFlight over WiFi.
-* **Mini-Circuits PGA-103+** — RF gain stage for the 1090 MHz receiver front-end.
-* **TA0970A SAW Filter** — Provides filtering of the 1090 MHz RF signal.
-* **AD8313** — RF logarithmic detector for signal-level measurement.
-* **u-blox MAX-M10S** — GNSS receiver for position and timing information.
-* **Bosch BMP581** — High-performance barometric pressure sensor for altitude and environmental data.
-* **USB-C** — USB connectivity for power, programming, and debugging.
-* **18650 Battery** — Integrated single-cell Li-ion battery power.
-* **Status LEDs** — Visual feedback for power, system state, and operation.
-* **Dual-MCU Architecture** — Separates real-time RF/processing tasks from wireless networking.
+* **1090 MHz Front End (ADS-B Receiver)** —Uses two sets of amplifiers and filters to receive and decode aircraft transponder data. PGA-103 is used as the gain stage, while the TA0970A serves as the SAW filter. Additionally, an AD8313 is included for signal level measurement
+* **STM32H723VGT6** —Handles all of the sensors, RF control and decoding of data 
+* **ESP32-S3-WROOM-1U-N16** —Handles the WiFi and transmission of decoded aircraft data to ForeFlight 
+* **GL90 Protocol** —Sends decoded traffic information to ForeFlight over WiFi
+* **MAX-M10S** —A GPS is included for positioning of the device 
+* **BMP581** —A barometric pressure sensor for altitude data in case a user requires it
+* **18650 Battery System** —Integrated two Li-ion batteries and a charging circuit 
 
 ## Purpose
 
-Pyghe is a compact 1090 MHz ADS-B receiver designed to provide aircraft traffic information to **ForeFlight**.
-
-The board uses a dual-MCU architecture to divide the workload between the **STM32H723** and **ESP32-S3**.
-
-The STM32 is responsible for the lower-level hardware and real-time processing, including the RF front-end, sensors, signal processing, and ADS-B decoding. Once aircraft data has been decoded, it is passed to the ESP32-S3.
-
-The ESP32-S3 provides the wireless networking layer and transmits the decoded traffic information to ForeFlight using the **GL90 protocol**.
-
-This architecture keeps the timing-sensitive RF and decoding workload isolated from the networking stack while still providing convenient WiFi connectivity.
-
-## PCB
-
-Pyghe is designed as a compact custom PCB integrating the complete RF receiver chain, two microcontrollers, GNSS, environmental sensing, battery management, and wireless connectivity.
-
-The board includes a dedicated RF path for 1090 MHz operation with an external antenna connection through an SMA connector.
+Pyghe is a 1090 MHz ADS-B receiver that is meant to provide aircraft traffic information to ForeFlight using the GL90 protocol. The board uses a dual MCU architecture to divide the workload. The STM32 handles the sensors, RF front end, and data decoding, which the ESP32 then transmits over WIFI to ForeFlight. 
 
 ### Top View
 
@@ -68,29 +47,6 @@ The board includes a dedicated RF path for 1090 MHz operation with an external a
 ### Bottom View
 
 <img width="1848" height="903" alt="Pyghe Bottom View" src="https://github.com/user-attachments/assets/b9e2b20b-25b1-42f0-a1eb-baca35bab58d" />
-
-## RF Signal Chain
-
-Pyghe's receiver front-end is designed around the **1090 MHz ADS-B frequency**.
-
-The incoming RF signal passes through a dedicated filtering and amplification chain before being processed by the STM32.
-
-### RF Front-End
-
-**SMA Antenna → RF Filter → PGA-103+ LNA → RF Detection / Processing → STM32**
-
-Key RF components include:
-
-| Component          | Function                             |
-| ------------------ | ------------------------------------ |
-| **KH-SMA-K513-G**  | External antenna connector           |
-| **TA0970A**        | 1090 MHz RF filter                   |
-| **PGA-103+**       | Low-noise RF amplifier               |
-| **AD8313**         | RF logarithmic detector              |
-| **MCP6566RT-E/OT** | High-speed comparator                |
-| **STM32H723VGT6**  | Signal processing and ADS-B decoding |
-
-The RF section is kept physically concentrated on the PCB to minimize unwanted parasitics and interference at 1090 MHz.
 
 ## Main Components
 
@@ -143,61 +99,6 @@ The ESP32-S3 acts as the wireless communications processor:
 
 This separation allows the STM32 to focus on deterministic real-time processing while the ESP32 handles the less deterministic networking workload.
 
-## Communication
-
-### ForeFlight / GL90
-
-Decoded ADS-B traffic is transferred to the ESP32-S3 and transmitted over WiFi using the **GL90 protocol**, allowing the receiver to act as an external traffic source for ForeFlight.
-
-### STM32 ↔ ESP32
-
-The two MCUs communicate through a dedicated digital interface, allowing the STM32 to send decoded aircraft information and system data to the ESP32-S3.
-
-### GNSS
-
-The **u-blox MAX-M10S** provides GNSS position and timing data to the system.
-
-### USB-C
-
-USB-C provides a convenient interface for:
-
-* Programming
-* Firmware development
-* Debugging
-* Power input
-
-## Sensors
-
-### u-blox MAX-M10S
-
-The integrated M10 GNSS receiver provides:
-
-* Latitude / longitude
-* Altitude
-* Ground speed
-* Heading
-* Time synchronization
-* GNSS positioning
-
-### Bosch BMP581
-
-The BMP581 provides high-resolution barometric pressure measurements for determining pressure altitude and monitoring environmental conditions.
-
-## Power System
-
-Pyghe uses an integrated **single-cell 18650 Li-ion battery**.
-
-The power architecture includes:
-
-* 18650 battery input
-* Battery management / charging
-* 3.3V regulation
-* Power switching
-* USB-C power input
-* Dedicated power status indication
-
-The **AZ1117CH-3.3** provides the primary 3.3V regulated rail used by the digital electronics.
-
 ## BOM
 
 The board uses a mixture of RF-specific components, high-performance microcontrollers, GNSS hardware, sensors, and standard passive components.
@@ -237,16 +138,6 @@ The receiver front-end contains several components specifically selected for ope
 | **MCP6566**          | High-speed signal comparison |
 | **KH-SMA-K513-G**    | External antenna interface   |
 | **U.FL-R-SMT-1(80)** | Compact RF interconnect      |
-
-## Status & Controls
-
-The board includes dedicated user-interface hardware for system feedback and control:
-
-* Power LED
-* System status LEDs
-* Main power switch
-* User / control button
-* USB-C interface
 
 ## Sponsors
 
