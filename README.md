@@ -40,22 +40,20 @@ Pyghe is a 1090 MHz ADS-B receiver that is meant to provide aircraft traffic inf
 
 | Category          | Component                 | Description                                                        |
 | ----------------- | ------------------------- | ------------------------------------------------------------------ |
-| Main MCU          | **STM32H723VGT6**         | STM32H7 high-performance MCU for RF control, sensors, and decoding |
-| Wireless MCU      | **ESP32-S3-WROOM-1U-N16** | WiFi-enabled MCU for ForeFlight connectivity                       |
-| RF Amplifier      | **PGA-103+**              | Mini-Circuits RF gain block                                        |
+| Main MCU          | **STM32H723VGT6**         | STM32H7 MCU for RF control, sensors, and decoding                  |
+| Wifi MCU          | **ESP32-S3-WROOM-1U-N16** | WiFi for ForeFlight connectivity                                   |
+| RF Amplifier      | **PGA-103+**              | Mini Circuits RF gain block                                        |
 | RF Filter         | **TA0970A**               | 1090 MHz RF filter                                                 |
 | RF Detector       | **AD8313ARMZ-REEL7**      | RF logarithmic detector                                            |
-| Comparator        | **MCP6566RT-E/OT**        | High-speed comparator                                              |
+| Comparator        | **MCP6566RT-E/OT**        | High speed comparator                                              |
 | GNSS              | **MAX-M10S-00B**          | u-blox M10 GNSS receiver                                           |
-| Barometer         | **BMP581**                | Bosch high-performance pressure sensor                             |
-| Battery Charger   | **MP2672**                | Single-cell Li-ion battery management                              |
-| 3.3V Regulator    | **AZ1117CH-3.3TRG1**      | 3.3V LDO regulator                                                 |
+| Barometer         | **BMP581**                | Bosch pressure sensor                                              |
+| Battery Charger   | **MP2672**                | Li-ion battery management                                          |
+| 3.3V Regulator    | **AZ1117CH-3.3TRG1**      | 3.3V LDO                                                           |
 | Antenna Connector | **KH-SMA-K513-G**         | SMA RF antenna connector                                           |
 | RF Connector      | **U.FL-R-SMT-1(80)**      | U.FL RF connector                                                  |
-| USB               | **HC-TYPE-C-16P-01A-G**   | USB Type-C connector                                               |
-| Main Crystal      | **25 MHz**                | System oscillator                                                  |
+| USB               | **HC-TYPE-C-16P-01A-G**   | USB Type C                                                         |
 | Battery           | **18650**                 | Single-cell Li-ion battery                                         |
-| Pressure Sensor   | **BMP581**                | Barometric altitude / pressure sensing                             |
 | GNSS Antenna / RF | **U.FL**                  | Compact RF connection for GNSS                                     |
 
 ## Sponsors
